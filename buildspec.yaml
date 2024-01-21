@@ -5,8 +5,8 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
-      - aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 466324222409.dkr.ecr.ap-northeast-2.amazonaws.com
-      - REPOSITORY_URI=466324222409.dkr.ecr.ap-northeast-2.amazonaws.com/facam-frontend
+      - aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 135149110460.dkr.ecr.ap-northeast-2.amazonaws.com
+      - REPOSITORY_URI=135149110460.dkr.ecr.ap-northeast-2.amazonaws.com/frontend
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
@@ -24,7 +24,7 @@ phases:
       - echo Writing image definitions file...
       - printf '[{"name":"frontend","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
-  files: 
+  files:
     - 'image*.json'
     - 'appspec.yaml'
     - 'taskdef.json'
@@ -35,4 +35,4 @@ artifacts:
         - taskdef.json
     ImageArtifact:
       files:
-        - imagedefinitions.json    
+        - imagedefinitions.json
