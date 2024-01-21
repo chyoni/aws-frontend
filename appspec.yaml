@@ -3,7 +3,7 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: "arn:aws:ecs:ap-northeast-2:466324222409:task-definition/my-ecs-frontend-task-definition:1"
+        TaskDefinition: 'arn:aws:ecs:ap-northeast-2:135149110460:task-definition/cwchoiit-ecs-frontend-task-def:1'
         LoadBalancerInfo:
-          ContainerName: "frontend"
+          ContainerName: 'frontend'
           ContainerPort: 80
