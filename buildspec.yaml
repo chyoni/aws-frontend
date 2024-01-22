@@ -4,6 +4,8 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
+      - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://127.0.0.1:2375 --storage-driver=overlay2 &
+      - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
       - aws --version
       - aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 135149110460.dkr.ecr.ap-northeast-2.amazonaws.com
       - REPOSITORY_URI=135149110460.dkr.ecr.ap-northeast-2.amazonaws.com/frontend
@@ -20,3 +22,16 @@ phases:
       - docker push $REPOSITORY_URI:v1
       - echo Writing image definitions file...
       - printf '[{"name":"frontend","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+artifacts:
+  files:
+    - 'image*.json'
+    - 'appspec.yaml'
+    - 'taskdef.json'
+  secondary-artifacts:
+    DefinitionArtifact:
+      files:
+        - appspec.yaml
+        - taskdef.json
+    ImageArtifact:
+      files:
+        - imagedefinitions.json
