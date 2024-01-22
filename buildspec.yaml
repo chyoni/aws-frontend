@@ -12,11 +12,11 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...
       - docker build -t frontend .
-      - docker tag frontend:latest $REPOSITORY_URI:latest
+      - docker tag frontend:latest $REPOSITORY_URI:v1
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
-      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:v1
       - echo Writing image definitions file...
       - printf '[{"name":"frontend","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
