@@ -1,101 +1,57 @@
 {
-  "ipcMode": null,
-  "executionRoleArn": "arn:aws:iam::466324222409:role/ecsTaskExecutionRole",
+  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:135149110460:task-definition/cwchoiit-ecs-frontend-task-def:7",
   "containerDefinitions": [
-    {
-      "dnsSearchDomains": [],
-      "environmentFiles": [],
-      "logConfiguration": null,
-      "entryPoint": [],
-      "portMappings": [
-        {
-          "hostPort": 0,
-          "protocol": "tcp",
-          "containerPort": 80
-        }
-      ],
-      "command": [],
-      "linuxParameters": null,
-      "cpu": 0,
-      "environment": [],
-      "resourceRequirements": null,
-      "ulimits": [],
-      "dnsServers": [],
-      "mountPoints": [],
-      "workingDirectory": null,
-      "secrets": [],
-      "dockerSecurityOptions": [],
-      "memory": null,
-      "memoryReservation": null,
-      "volumesFrom": [],
-      "stopTimeout": null,
-      "image": "466324222409.dkr.ecr.ap-northeast-2.amazonaws.com/facam-frontend",
-      "startTimeout": null,
-      "firelensConfiguration": null,
-      "dependsOn": null,
-      "disableNetworking": null,
-      "interactive": null,
-      "healthCheck": null,
-      "essential": true,
-      "links": [],
-      "hostname": null,
-      "extraHosts": [],
-      "pseudoTerminal": null,
-      "user": null,
-      "readonlyRootFilesystem": null,
-      "dockerLabels": {},
-      "systemControls": [],
-      "privileged": null,
-      "name": "frontend"
-    }
+      {
+          "name": "frontend",
+          "image": "135149110460.dkr.ecr.ap-northeast-2.amazonaws.com/frontend:v1",
+          "cpu": 0,
+          "portMappings": [
+              {
+                  "name": "frontend-80-tcp",
+                  "containerPort": 80,
+                  "hostPort": 0,
+                  "protocol": "tcp",
+                  "appProtocol": "http"
+              }
+          ],
+          "essential": true,
+          "environment": [],
+          "environmentFiles": [],
+          "mountPoints": [],
+          "volumesFrom": [],
+          "ulimits": []
+      }
+  ],
+  "family": "cwchoiit-ecs-frontend-task-def",
+  "executionRoleArn": "arn:aws:iam::135149110460:role/ecsTaskExecutionRole",
+  "networkMode": "bridge",
+  "revision": 7,
+  "volumes": [],
+  "status": "ACTIVE",
+  "requiresAttributes": [
+      {
+          "name": "com.amazonaws.ecs.capability.ecr-auth"
+      },
+      {
+          "name": "ecs.capability.execution-role-ecr-pull"
+      },
+      {
+          "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+      }
   ],
   "placementConstraints": [],
-  "memory": "1024",
-  "taskRoleArn": null,
   "compatibilities": [
-    "EC2"
+      "EC2"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:466324222409:task-definition/my-ecs-frontend-task-definition:1",
-  "family": "my-ecs-frontend-task-definition",
-  "requiresAttributes": [
-    {
-      "targetId": null,
-      "targetType": null,
-      "value": null,
-      "name": "com.amazonaws.ecs.capability.ecr-auth"
-    },
-    {
-      "targetId": null,
-      "targetType": null,
-      "value": null,
-      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.17"
-    },
-    {
-      "targetId": null,
-      "targetType": null,
-      "value": null,
-      "name": "ecs.capability.execution-role-ecr-pull"
-    },
-    {
-      "targetId": null,
-      "targetType": null,
-      "value": null,
-      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
-    }
-  ],
-  "pidMode": null,
   "requiresCompatibilities": [
-    "EC2"
+      "EC2"
   ],
-  "networkMode": "bridge",
+  "memory": "1024",
   "runtimePlatform": {
-    "operatingSystemFamily": "LINUX",
-    "cpuArchitecture": "X86_64"
+      "cpuArchitecture": "X86_64",
+      "operatingSystemFamily": "LINUX"
   },
-  "cpu": null,
-  "revision": 1,
-  "status": "ACTIVE",
-  "inferenceAccelerators": null,
-  "proxyConfiguration": null,
-  "volumes": []
+  "registeredAt": "2024-01-22T12:14:25.375Z",
+  "registeredBy": "arn:aws:iam::135149110460:root",
+  "tags": []
 }
