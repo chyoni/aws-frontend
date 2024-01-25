@@ -13,7 +13,7 @@ export default class HeaderComponent extends Component {
           <nav className="navbar navbar-expand-md navbar-dark bg-dark">
             <div>
               <a href="http://ecs.cwchoiit.net" className="navbar-brand">
-                cwcHoI-ECS by CodePipeline
+                cwcHoI-ECS by CodePipeline 2
               </a>
             </div>
           </nav>
