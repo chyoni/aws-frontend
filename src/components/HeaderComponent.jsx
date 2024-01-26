@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class HeaderComponent extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ export default class HeaderComponent extends Component {
           <nav className="navbar navbar-expand-md navbar-dark bg-dark">
             <div>
               <a href="http://ecs.cwchoiit.net" className="navbar-brand">
-                cwcHoI-ECS by CodePipeline
+                Holse Holse
               </a>
             </div>
           </nav>
